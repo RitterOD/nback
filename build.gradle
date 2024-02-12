@@ -2,6 +2,15 @@ plugins {
 	id 'java'
 	id 'org.springframework.boot' version '3.0.5'
 	id 'io.spring.dependency-management' version '1.1.0'
+	id 'org.liquibase.gradle' version '2.0'
+
+}
+
+ext {
+	database = new Properties().with {
+		load(file("db.properties").newReader()) //название файла с данными для бд
+		it
+	}
 }
 
 group = 'org.maslov'
@@ -36,4 +45,18 @@ dependencies {
 
 tasks.named('test') {
 	useJUnitPlatform()
+}
+
+liquibase {
+	activities {
+		main {
+			changeLogFile "$buildDir/generated-migrations.yaml"
+			//используем переменные, а не сами значения
+			url database.getProperty("dbUrl")
+			username database.getProperty("dbUsername")
+			password database.getProperty("dbPassword")
+			referenceUrl 'hibernate:spring:entity?dialect=org.hibernate.dialect.PostgreSQL10Dialect&hibernate.physical_naming_strategy=org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy&hibernate.implicit_naming_strategy=org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy'
+		}
+		runList = "main"
+	}
 }
