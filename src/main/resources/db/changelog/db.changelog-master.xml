@@ -2,4 +2,180 @@
 
   <include file="classpath:db/changelog/changesets/20240211141524_init.xml" relativeToChangelogFile="false" />
 
+    <changeSet author="alex (generated)" id="1708544818755-4">
+        <createTable tableName="deal_entity">
+            <column name="id" type="BYTEA">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="deal_entityPK"/>
+            </column>
+            <column name="settings_id" type="BYTEA">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="alex (generated)" id="1708544818755-5">
+        <createTable tableName="deal_entity_deal_step_entity">
+            <column name="DealEntity_id" type="BYTEA">
+                <constraints nullable="false"/>
+            </column>
+            <column name="dealStepEntities_id" type="BYTEA">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="alex (generated)" id="1708544818755-6">
+        <createTable tableName="deal_entity_game_entity">
+            <column name="DealEntity_id" type="BYTEA">
+                <constraints nullable="false"/>
+            </column>
+            <column name="gameEntities_id" type="BYTEA">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="alex (generated)" id="1708544818755-7">
+        <createTable tableName="deal_settings_entity">
+            <column name="id" type="BYTEA">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="deal_settings_entityPK"/>
+            </column>
+            <column name="deal_abc_entity_id" type="BYTEA">
+                <constraints nullable="false"/>
+            </column>
+            <column name="step_length_entity_id" type="BYTEA">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="alex (generated)" id="1708544818755-8">
+        <createTable tableName="deal_settings_entity_deal_entity">
+            <column name="DealSettingsEntity_id" type="BYTEA">
+                <constraints nullable="false"/>
+            </column>
+            <column name="dealEntities_id" type="BYTEA">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="alex (generated)" id="1708544818755-9">
+        <createTable tableName="deal_step_entity">
+            <column name="id" type="BYTEA">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="deal_step_entityPK"/>
+            </column>
+            <column name="order" type="BIGINT"/>
+            <column name="value" type="VARCHAR(255)"/>
+            <column name="deal_id" type="BYTEA">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="alex (generated)" id="1708544818755-10">
+        <createTable tableName="game_entity">
+            <column name="id" type="BYTEA">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="game_entityPK"/>
+            </column>
+            <column name="deal_id" type="BYTEA"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="alex (generated)" id="1708544818755-11">
+        <createTable tableName="game_entity_game_event_entity">
+            <column name="GameEntity_id" type="BYTEA">
+                <constraints nullable="false"/>
+            </column>
+            <column name="gameEventEntities_id" type="BYTEA">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="alex (generated)" id="1708544818755-12">
+        <createTable tableName="game_event_entity">
+            <column name="id" type="BYTEA">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="game_event_entityPK"/>
+            </column>
+            <column name="event_type" type="VARCHAR(255)"/>
+            <column name="time_stamp" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="alex (generated)" id="1708544818755-13">
+        <createTable tableName="gamer_entity">
+            <column name="id" type="BYTEA">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="gamer_entityPK"/>
+            </column>
+            <column name="name" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="alex (generated)" id="1708544818755-14">
+        <createTable tableName="step_length_entity">
+            <column name="id" type="BYTEA">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="step_length_entityPK"/>
+            </column>
+            <column name="length" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="alex (generated)" id="1708544818755-15">
+        <createTable tableName="step_number_entity">
+            <column name="id" type="BYTEA">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="step_number_entityPK"/>
+            </column>
+            <column name="step_number" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="alex (generated)" id="1708544818755-16">
+        <addUniqueConstraint columnNames="gameEventEntities_id" constraintName="UK_3ykyjbkdr1hih6b3j4sfkkl6j" tableName="game_entity_game_event_entity"/>
+    </changeSet>
+    <changeSet author="alex (generated)" id="1708544818755-17">
+        <addUniqueConstraint columnNames="gameEntities_id" constraintName="UK_9o4jo9ryjw3i5pe8uqn9radqh" tableName="deal_entity_game_entity"/>
+    </changeSet>
+    <changeSet author="alex (generated)" id="1708544818755-18">
+        <addUniqueConstraint columnNames="dealEntities_id" constraintName="UK_fjqj28jbvbfx4ipvw9bstf1av" tableName="deal_settings_entity_deal_entity"/>
+    </changeSet>
+    <changeSet author="alex (generated)" id="1708544818755-19">
+        <addUniqueConstraint columnNames="dealStepEntities_id" constraintName="UK_fp8sv5og69vx5w5mnjoh7rbx5" tableName="deal_entity_deal_step_entity"/>
+    </changeSet>
+    <changeSet author="alex (generated)" id="1708544818755-20">
+        <addForeignKeyConstraint baseColumnNames="DealEntity_id" baseTableName="deal_entity_deal_step_entity" constraintName="FK17au4t44rjcvb0ytbnjiro5sm" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="deal_entity" validate="true"/>
+    </changeSet>
+    <changeSet author="alex (generated)" id="1708544818755-21">
+        <addForeignKeyConstraint baseColumnNames="settings_id" baseTableName="deal_entity" constraintName="FK1sbboegdqtvla92gt0d9m2cpc" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="deal_settings_entity" validate="true"/>
+    </changeSet>
+    <changeSet author="alex (generated)" id="1708544818755-22">
+        <addForeignKeyConstraint baseColumnNames="deal_id" baseTableName="deal_step_entity" constraintName="FK6dr6dchkwsoqjavurdqei13d9" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="deal_entity" validate="true"/>
+    </changeSet>
+    <changeSet author="alex (generated)" id="1708544818755-23">
+        <addForeignKeyConstraint baseColumnNames="gameEntities_id" baseTableName="deal_entity_game_entity" constraintName="FK6skk78wb3evbsmn55ja4qupih" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="game_entity" validate="true"/>
+    </changeSet>
+    <changeSet author="alex (generated)" id="1708544818755-24">
+        <addForeignKeyConstraint baseColumnNames="step_length_entity_id" baseTableName="deal_settings_entity" constraintName="FKfvj3kvl7xqsjcnqymntaq8ff6" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="step_length_entity" validate="true"/>
+    </changeSet>
+    <changeSet author="alex (generated)" id="1708544818755-25">
+        <addForeignKeyConstraint baseColumnNames="dealEntities_id" baseTableName="deal_settings_entity_deal_entity" constraintName="FKi87t08rtxxl0a9tgnhl127jan" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="deal_entity" validate="true"/>
+    </changeSet>
+    <changeSet author="alex (generated)" id="1708544818755-26">
+        <addForeignKeyConstraint baseColumnNames="deal_id" baseTableName="game_entity" constraintName="FKj2ldtbbh2ivgnjjiflhq3gww0" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="deal_entity" validate="true"/>
+    </changeSet>
+    <changeSet author="alex (generated)" id="1708544818755-27">
+        <addForeignKeyConstraint baseColumnNames="deal_abc_entity_id" baseTableName="deal_settings_entity" constraintName="FKkgtvjvyrucgt7jxamjjg6vk4e" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="deal_abc_entity" validate="true"/>
+    </changeSet>
+    <changeSet author="alex (generated)" id="1708544818755-28">
+        <addForeignKeyConstraint baseColumnNames="GameEntity_id" baseTableName="game_entity_game_event_entity" constraintName="FKlrm9iwfgy5adfdhexfy6ocg4x" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="game_entity" validate="true"/>
+    </changeSet>
+    <changeSet author="alex (generated)" id="1708544818755-29">
+        <addForeignKeyConstraint baseColumnNames="gameEventEntities_id" baseTableName="game_entity_game_event_entity" constraintName="FKn13s5q1f59twd3ojid3rj88p9" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="game_event_entity" validate="true"/>
+    </changeSet>
+    <changeSet author="alex (generated)" id="1708544818755-30">
+        <addForeignKeyConstraint baseColumnNames="dealStepEntities_id" baseTableName="deal_entity_deal_step_entity" constraintName="FKo6yjmjuyvbap51ked63kcrsvl" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="deal_step_entity" validate="true"/>
+    </changeSet>
+    <changeSet author="alex (generated)" id="1708544818755-31">
+        <addForeignKeyConstraint baseColumnNames="DealSettingsEntity_id" baseTableName="deal_settings_entity_deal_entity" constraintName="FKsktnvr3wc9nrv2qduhiqevldu" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="deal_settings_entity" validate="true"/>
+    </changeSet>
+    <changeSet author="alex (generated)" id="1708544818755-32">
+        <addForeignKeyConstraint baseColumnNames="DealEntity_id" baseTableName="deal_entity_game_entity" constraintName="FKtf8hi0iqk695dah36jj3blsxl" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="deal_entity" validate="true"/>
+    </changeSet>
+    <changeSet author="alex (generated)" id="1708544818755-1">
+        <modifyDataType columnName="id" newDataType="bytea" tableName="deal_abc_entity"/>
+    </changeSet>
+    <changeSet author="alex (generated)" id="1708544818755-2">
+        <modifyDataType columnName="name" newDataType="varchar(255)" tableName="deal_abc_entity"/>
+    </changeSet>
+    <changeSet author="alex (generated)" id="1708544818755-3">
+        <dropNotNullConstraint columnDataType="varchar(255)" columnName="name" tableName="deal_abc_entity"/>
+    </changeSet>
 </databaseChangeLog>
