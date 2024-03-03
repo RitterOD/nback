@@ -2,6 +2,8 @@ package org.maslov.nback.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -36,8 +38,28 @@ public class DealSettingsEntity {
   @JoinColumn(name = "deal_abc_entity_id", nullable = false)
   private DealAbcEntity dealAbcEntity;
 
+
+
+  @ManyToOne
+  @JoinColumn(name="insert_probability_id", nullable = false)
+  private DealProbabilityEntity dealProbabilityEntity;
+
+  @Column(name="deal_type")
+  @Enumerated(value = EnumType.STRING)
+  private DealType dealType;
+
+
+
   public StepLengthEntity getStepLengthEntity() {
     return stepLengthEntity;
+  }
+
+  public DealProbabilityEntity getDealProbabilityEntity() {
+    return dealProbabilityEntity;
+  }
+
+  public void setDealProbabilityEntity(DealProbabilityEntity dealProbabilityEntity) {
+    this.dealProbabilityEntity = dealProbabilityEntity;
   }
 
   public void setStepLengthEntity(StepLengthEntity stepLengthEntity) {

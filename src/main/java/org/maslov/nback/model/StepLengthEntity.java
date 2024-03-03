@@ -20,4 +20,20 @@ public class StepLengthEntity {
   @Column(name = "length")
   private Long length;
 
+
+  public UUID getId() {
+    return id;
+  }
+
+  public void setId(UUID id) {
+    this.id = id;
+  }
+
+  public Long getLength() {
+    return length;
+  }
+
+  public void setLength(Long length) {
+    this.length = length;
+  }
 }
