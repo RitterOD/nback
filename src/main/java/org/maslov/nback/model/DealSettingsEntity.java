@@ -26,7 +26,7 @@ public class DealSettingsEntity {
 
 
 
-  @OneToMany
+  @OneToMany(mappedBy = "dealSettingsEntity")
   private List<DealEntity> dealEntities;
 
 

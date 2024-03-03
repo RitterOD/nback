@@ -24,6 +24,31 @@ public class GameEntity {
   @JoinColumn(name = "deal_id")
   private DealEntity dealEntity;
 
-  @OneToMany
+  @OneToMany(mappedBy = "game")
   private List<GameEventEntity> gameEventEntities;
+
+
+  public UUID getId() {
+    return id;
+  }
+
+  public void setId(UUID id) {
+    this.id = id;
+  }
+
+  public DealEntity getDealEntity() {
+    return dealEntity;
+  }
+
+  public void setDealEntity(DealEntity dealEntity) {
+    this.dealEntity = dealEntity;
+  }
+
+  public List<GameEventEntity> getGameEventEntities() {
+    return gameEventEntities;
+  }
+
+  public void setGameEventEntities(List<GameEventEntity> gameEventEntities) {
+    this.gameEventEntities = gameEventEntities;
+  }
 }

@@ -7,6 +7,8 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import java.util.UUID;
 import lombok.Getter;
@@ -25,9 +27,31 @@ public class GameEventEntity {
   @Enumerated(EnumType.STRING)
   private GameEventType gameEventType;
 
+  @ManyToOne
+  @JoinColumn(name = "game_entity_id", nullable = false)
+  private GameEntity game;
+
 
   @Column(name = "time_stamp")
   private Long timeStamp;
+
+  public GameEntity getGame() {
+    return game;
+  }
+
+  public void setGame(GameEntity game) {
+    this.game = game;
+  }
+
+  public Long getTimeStamp() {
+    return timeStamp;
+  }
+
+  public void setTimeStamp(Long timeStamp) {
+    this.timeStamp = timeStamp;
+  }
+
+
 
   public UUID getId() {
     return id;

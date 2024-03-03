@@ -28,10 +28,10 @@ public class DealEntity {
   @JoinColumn(name="settings_id", nullable=false)
   private DealSettingsEntity dealSettingsEntity;
 
-  @OneToMany
+  @OneToMany(mappedBy = "dealEntity")
   private List<GameEntity> gameEntities;
 
-  @OneToMany
+  @OneToMany(mappedBy = "dealEntity")
   private List<DealStepEntity> dealStepEntities;
 
   public UUID getId() {
