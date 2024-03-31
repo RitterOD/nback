@@ -22,6 +22,16 @@ public class DealAbcEntity {
   @Column(name = "name")
   private String name;
 
+  @Column(name = "elements", columnDefinition = "TEXT")
+  private String elements;
+
+  public String getElements() {
+    return elements;
+  }
+
+  public void setElements(String elements) {
+    this.elements = elements;
+  }
 
   public UUID getId() {
     return id;
