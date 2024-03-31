@@ -10,5 +10,24 @@
             <column name="elements" type="TEXT"/>
         </addColumn>
     </changeSet>
+    <changeSet id="1711894412477-2" author="alex (generated)">
+        <insert tableName="deal_abc">
+            <column name="id" value="502e4336-4e66-41d1-bb75-ba175c58e586"/>
+            <column name="name" value="lowcase latin"/>
+            <column name="elements" value="{&quot;values&quot;:[&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;, &quot;e&quot;, &quot;f&quot;, &quot;g&quot;, &quot;h&quot;, &quot;i&quot;, &quot;j&quot;, &quot;k&quot;, &quot;l&quot;, &quot;m&quot;, &quot;n&quot;, &quot;o&quot;, &quot;p&quot;, &quot;q&quot;, &quot;r&quot;, &quot;s&quot;, &quot;t&quot;, &quot;u&quot;, &quot;v&quot;, &quot;w&quot;, &quot;x&quot;, &quot;y&quot;, &quot;z&quot;]}"/>
+        </insert>
+        <insert tableName="deal_abc">
+            <column name="id" value="502e4336-4e66-41d1-bb75-ba175c58e587"/>
+            <column name="name" value="digital"/>
+            <column name="elements" value="{&quot;values&quot;:[&quot;1&quot;,&quot;2&quot;,&quot;3&quot;,&quot;4&quot;,&quot;5&quot;,&quot;6&quot;,&quot;7&quot;,&quot;8&quot;,&quot;9&quot;,&quot;0&quot; ]}"/>
+        </insert>
+    </changeSet>
+
+
+
+
+
+
+
 
 </databaseChangeLog>
