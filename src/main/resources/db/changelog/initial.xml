@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.17.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1711887245965-1" author="alex (generated)">
+        <createTable tableName="deal">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_deal"/>
+            </column>
+            <column name="settings_id" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="1711887245965-2" author="alex (generated)">
+        <createTable tableName="deal_abc">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_deal_abc"/>
+            </column>
+            <column name="name" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1711887245965-3" author="alex (generated)">
+        <createTable tableName="deal_probability">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_deal_probability"/>
+            </column>
+            <column name="insert_probability" type="DOUBLE"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1711887245965-4" author="alex (generated)">
+        <createTable tableName="deal_settings">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_deal_settings"/>
+            </column>
+            <column name="step_length_id" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="deal_abc_id" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="insert_probability_id" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="deal_type" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1711887245965-5" author="alex (generated)">
+        <createTable tableName="deal_step">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_deal_step"/>
+            </column>
+            <column name="order" type="BIGINT"/>
+            <column name="value" type="VARCHAR(255)"/>
+            <column name="deal_id" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="1711887245965-6" author="alex (generated)">
+        <createTable tableName="game">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_game"/>
+            </column>
+            <column name="deal_id" type="UUID"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1711887245965-7" author="alex (generated)">
+        <createTable tableName="game_event">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_game_event"/>
+            </column>
+            <column name="event_type" type="VARCHAR(255)"/>
+            <column name="game_id" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="time_stamp" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1711887245965-8" author="alex (generated)">
+        <createTable tableName="gamer">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_gamer"/>
+            </column>
+            <column name="name" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1711887245965-9" author="alex (generated)">
+        <createTable tableName="step_length">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_step_length"/>
+            </column>
+            <column name="length" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1711887245965-10" author="alex (generated)">
+        <createTable tableName="step_number">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_step_number"/>
+            </column>
+            <column name="step_number" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1711887245965-11" author="alex (generated)">
+        <addForeignKeyConstraint baseColumnNames="settings_id" baseTableName="deal" constraintName="FK_DEAL_ON_SETTINGS"
+                                 referencedColumnNames="id" referencedTableName="deal_settings"/>
+    </changeSet>
+    <changeSet id="1711887245965-12" author="alex (generated)">
+        <addForeignKeyConstraint baseColumnNames="deal_abc_id" baseTableName="deal_settings"
+                                 constraintName="FK_DEAL_SETTINGS_ON_DEAL_ABC" referencedColumnNames="id"
+                                 referencedTableName="deal_abc"/>
+    </changeSet>
+    <changeSet id="1711887245965-13" author="alex (generated)">
+        <addForeignKeyConstraint baseColumnNames="insert_probability_id" baseTableName="deal_settings"
+                                 constraintName="FK_DEAL_SETTINGS_ON_INSERT_PROBABILITY" referencedColumnNames="id"
+                                 referencedTableName="deal_probability"/>
+    </changeSet>
+    <changeSet id="1711887245965-14" author="alex (generated)">
+        <addForeignKeyConstraint baseColumnNames="step_length_id" baseTableName="deal_settings"
+                                 constraintName="FK_DEAL_SETTINGS_ON_STEP_LENGTH" referencedColumnNames="id"
+                                 referencedTableName="step_length"/>
+    </changeSet>
+    <changeSet id="1711887245965-15" author="alex (generated)">
+        <addForeignKeyConstraint baseColumnNames="deal_id" baseTableName="deal_step"
+                                 constraintName="FK_DEAL_STEP_ON_DEAL" referencedColumnNames="id"
+                                 referencedTableName="deal"/>
+    </changeSet>
+    <changeSet id="1711887245965-16" author="alex (generated)">
+        <addForeignKeyConstraint baseColumnNames="game_id" baseTableName="game_event"
+                                 constraintName="FK_GAME_EVENT_ON_GAME" referencedColumnNames="id"
+                                 referencedTableName="game"/>
+    </changeSet>
+    <changeSet id="1711887245965-17" author="alex (generated)">
+        <addForeignKeyConstraint baseColumnNames="deal_id" baseTableName="game" constraintName="FK_GAME_ON_DEAL"
+                                 referencedColumnNames="id" referencedTableName="deal"/>
+    </changeSet>
+
+</databaseChangeLog>
