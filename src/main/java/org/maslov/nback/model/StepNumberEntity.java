@@ -11,7 +11,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name = "step_number_entity")
+@Table(name = "step_number")
 public class StepNumberEntity {
 
   @Id @GeneratedValue(strategy = GenerationType.UUID) @Column(name = "id", nullable = false)

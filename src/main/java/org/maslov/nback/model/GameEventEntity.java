@@ -15,7 +15,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name = "game_event_entity")
+@Table(name = "game_event")
 public class GameEventEntity {
 
   @Id
@@ -28,7 +28,7 @@ public class GameEventEntity {
   private GameEventType gameEventType;
 
   @ManyToOne
-  @JoinColumn(name = "game_entity_id", nullable = false)
+  @JoinColumn(name = "game_id", nullable = false)
   private GameEntity game;
 
 

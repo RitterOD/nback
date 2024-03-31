@@ -11,7 +11,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name = "deal_abc_entity")
+@Table(name = "deal_abc")
 public class DealAbcEntity {
 
   @Id

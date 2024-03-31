@@ -23,7 +23,9 @@ configurations {
     compileOnly {
         extendsFrom annotationProcessor
     }
+    liquibaseRuntime.extendsFrom runtimeClasspath
 }
+
 
 repositories {
     mavenCentral()
@@ -60,13 +62,13 @@ tasks.named('test') {
 liquibase {
     activities {
         main {
-            changeLogFile "src/main/resources/db/changelog/db.changelog-master.xml"
+            changelogFile "src/main/resources/db/changelog/db.changelog-master.xml"
             //используем переменные, а не сами значения
             url database.getProperty("dbUrl")
             username database.getProperty("dbUsername")
             password database.getProperty("dbPassword")
             referenceDriver 'liquibase.ext.hibernate.database.connection.HibernateDriver'
-            referenceUrl 'hibernate:spring:org.maslov.nback.model?dialect=org.hibernate.dialect.PostgreSQLDialect'
+            referenceUrl 'hibernate:spring:org.maslov.nback.model?dialect=org.hibernate.dialect.PostgreSQLDialect&hibernate.physical_naming_strategy=org.hibernate.boot.model.naming.CamelCaseToUnderscoresNamingStrategy&hibernate.implicit_naming_strategy=org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy'
         }
         runList = "main"
     }

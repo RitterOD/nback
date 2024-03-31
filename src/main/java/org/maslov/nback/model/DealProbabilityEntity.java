@@ -10,7 +10,7 @@ import jakarta.persistence.Table;
 import java.util.UUID;
 
 @Entity
-@Table(name = "deal_probability_entity")
+@Table(name = "deal_probability")
 public class DealProbabilityEntity {
   @Id
   @GeneratedValue(strategy = GenerationType.UUID)

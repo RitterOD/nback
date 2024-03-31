@@ -11,7 +11,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name = "gamer_entity")
+@Table(name = "gamer")
 public class GamerEntity {
 
   @Id @GeneratedValue(strategy = GenerationType.UUID)

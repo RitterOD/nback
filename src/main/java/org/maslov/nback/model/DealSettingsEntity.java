@@ -17,7 +17,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name = "deal_settings_entity")
+@Table(name = "deal_settings")
 public class DealSettingsEntity {
 
   @Id @GeneratedValue(strategy = GenerationType.UUID)
@@ -31,11 +31,11 @@ public class DealSettingsEntity {
 
 
   @ManyToOne
-  @JoinColumn(name = "step_length_entity_id", nullable = false)
+  @JoinColumn(name = "step_length_id", nullable = false)
   private StepLengthEntity stepLengthEntity;
 
   @ManyToOne
-  @JoinColumn(name = "deal_abc_entity_id", nullable = false)
+  @JoinColumn(name = "deal_abc_id", nullable = false)
   private DealAbcEntity dealAbcEntity;
 
 
