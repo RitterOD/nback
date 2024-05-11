@@ -12,7 +12,6 @@ import org.springframework.stereotype.Component;
 
 import java.util.Collections;
 
-@Component
 public class RestV1authenticationProvider implements AuthenticationProvider {
 
 
