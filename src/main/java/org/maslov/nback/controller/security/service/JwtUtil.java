@@ -15,7 +15,7 @@ public class JwtUtil {
 
 
     // TODO Add secret provider
-    private final String secret_key = "mysecretkey";
+    private final String secret_key = "mysecretkeymysecretkeymysecretkeymysecretkey";
 
     // TODO Add provider
     private long accessTokenValidity = 60*60*1000;
