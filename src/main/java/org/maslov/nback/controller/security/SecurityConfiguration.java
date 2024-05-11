@@ -16,7 +16,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-import static org.maslov.nback.controller.rest.v1.RestApiNamesV1.API_V1_AUTH_LOGIN;
+import static org.maslov.nback.controller.rest.v1.RestApiNamesV1.*;
 
 @Configuration
 @EnableWebSecurity
@@ -44,8 +44,8 @@ public class SecurityConfiguration {
     public SecurityFilterChain restSecurityFilterChain(HttpSecurity http) throws Exception {
         http.csrf().disable()
                 .authorizeRequests()
-                .requestMatchers(API_V1_AUTH_LOGIN).permitAll()
-                .anyRequest().authenticated()
+                .requestMatchers(API_V1_AUTH_LOGIN, API_V1_PUBLIC_ALL).permitAll()
+                .requestMatchers(API_V1_PRIVATE_ALL).authenticated()
                 .and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and().addFilterBefore(jwtAuthorizationFilter, UsernamePasswordAuthenticationFilter.class);
 
