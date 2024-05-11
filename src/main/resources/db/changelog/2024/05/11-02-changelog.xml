@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.17.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="181611052024-1" author="alex (generated)">
+        <insert tableName="nback_user_role">
+            <column name="id" value="bc0a0c05-0b15-47af-960d-e87f8fb0b0e3"/>
+            <column name="role" value="ROLE_ADMIN"/>
+        </insert>
+        <insert tableName="nback_user_role">
+            <column name="id" value="ea01b0cc-f6ce-4117-bb14-4600df2c3020"/>
+            <column name="role" value="ROLE_USER"/>
+        </insert>
+        <insert tableName="nback_user">
+            <column name="id" value="8568fec9-bd67-49ac-98a5-3c6ad1720510"/>
+            <column name="user_name" value="admin"/>
+            <column name="password" value="$2a$12$oVxaIzLNwgpZPzJiaiCdu.zBRmC1tMgc.uwPE/E1FzkN67iZcWvna"/>
+        </insert>
+        <insert tableName="roles_to_users">
+            <column name="role_id" value="bc0a0c05-0b15-47af-960d-e87f8fb0b0e3"/>
+            <column name="user_id" value="8568fec9-bd67-49ac-98a5-3c6ad1720510"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

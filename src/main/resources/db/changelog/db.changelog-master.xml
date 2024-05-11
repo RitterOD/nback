@@ -7,4 +7,5 @@
     <include file="db/changelog/initial.xml"/>
     <include file="db/changelog/2024/03/31-01-changelog.xml"/>
     <include file="db/changelog/2024/05/11-01-changelog.xml"/>
+    <include file="db/changelog/2024/05/11-02-changelog.xml"/>
 </databaseChangeLog>
