@@ -1,20 +1,20 @@
 package org.maslov.nback.controller.security.model;
 
 public class LoginResponse {
-    private String email;
+    private String login;
     private String token;
 
-    public LoginResponse(String email, String token) {
-        this.email = email;
+    public LoginResponse(String login, String token) {
+        this.login = login;
         this.token = token;
     }
 
-    public String getEmail() {
-        return email;
+    public String getLogin() {
+        return login;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setLogin(String login) {
+        this.login = login;
     }
 
     public String getToken() {
