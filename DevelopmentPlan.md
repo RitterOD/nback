@@ -14,3 +14,8 @@ Implement backend part of application
 # Unsolved tasks
 1. Take a table name from annotation in gradle plugin
 2. UUID generation in gradle plugin
+
+# Security
+1. Refactor code borrowed from sec project
+1.1 Separate auth service from another code
+2. Add some test

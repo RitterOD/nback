@@ -1,5 +1,6 @@
 package org.maslov.nback.controller.security;
 
+import org.maslov.nback.controller.security.service.JwtAuthorizationFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
@@ -12,18 +13,21 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-import static org.springframework.security.config.Customizer.withDefaults;
+import static org.maslov.nback.controller.rest.v1.RestApiNamesV1.API_V1_AUTH_LOGIN;
 
 @Configuration
 @EnableWebSecurity
-public class WebSecurityConfiguration {
+public class SecurityConfiguration {
 
 
     private final UserDetailsService userDetailsService;
+    private final JwtAuthorizationFilter jwtAuthorizationFilter;
 
-    public WebSecurityConfiguration(UserDetailsService userDetailsService) {
+    public SecurityConfiguration(UserDetailsService userDetailsService, JwtAuthorizationFilter jwtAuthorizationFilter) {
         this.userDetailsService = userDetailsService;
+        this.jwtAuthorizationFilter = jwtAuthorizationFilter;
     }
 
     @Bean
@@ -37,32 +41,32 @@ public class WebSecurityConfiguration {
     @Bean
     @Order(1)
     public SecurityFilterChain restSecurityFilterChain(HttpSecurity http) throws Exception {
-        return http
-                .securityMatcher("/api/**")
-                .authorizeHttpRequests(auth -> {
-                    auth.anyRequest().authenticated();
-                })
-                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                .httpBasic(withDefaults())
-                .build();
-    }
-
-    @Bean
-    @Order(2)
-    public SecurityFilterChain webSecurityFilterChain(HttpSecurity http) throws Exception {
-        http
-                .authorizeHttpRequests((requests) -> requests
-                        .requestMatchers("/", "/home").permitAll()
-                        .anyRequest().authenticated()
-                )
-                .formLogin((form) -> form
-                        .loginPage("/login")
-                        .permitAll()
-                )
-                .logout((logout) -> logout.permitAll());
+        http.csrf().disable()
+                .authorizeRequests()
+                .requestMatchers(API_V1_AUTH_LOGIN).permitAll()
+                .anyRequest().authenticated()
+                .and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                .and().addFilterBefore(jwtAuthorizationFilter, UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
     }
+
+//    @Bean
+//    @Order(2)
+//    public SecurityFilterChain webSecurityFilterChain(HttpSecurity http) throws Exception {
+//        http
+//                .authorizeHttpRequests((requests) -> requests
+//                        .requestMatchers("/", "/home").permitAll()
+//                        .anyRequest().authenticated()
+//                )
+//                .formLogin((form) -> form
+//                        .loginPage("/login")
+//                        .permitAll()
+//                )
+//                .logout((logout) -> logout.permitAll());
+//
+//        return http.build();
+//    }
 
 //    @Bean
 //    public UserDetailsService userDetailsService() {

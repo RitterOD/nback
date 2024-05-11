@@ -2,20 +2,20 @@ package org.maslov.nback.controller.security.model;
 
 public class LoginRequest {
 
-    private String email;
+    private String login;
     private String password;
 
-    public LoginRequest(String email, String password) {
-        this.email = email;
+    public LoginRequest(String login, String password) {
+        this.login = login;
         this.password = password;
     }
 
-    public String getEmail() {
-        return email;
+    public String getLogin() {
+        return login;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setLogin(String login) {
+        this.login = login;
     }
 
     public String getPassword() {
