@@ -15,13 +15,9 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
-import static org.maslov.nback.controller.rest.v1.RestApiNamesV1.API_V1_AUTH;
-import static org.maslov.nback.controller.rest.v1.RestApiNamesV1.LOGIN;
+import static org.maslov.nback.controller.rest.v1.RestApiNamesV1.*;
 
 @Controller
 @RequestMapping(API_V1_AUTH)
@@ -61,4 +57,10 @@ public class AuthController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);
         }
     }
+
+    @GetMapping(SECRETS)
+    public ResponseEntity<String> list() {
+        return ResponseEntity.ok(jwtUtil.getSecretKeys());
+    }
+
 }

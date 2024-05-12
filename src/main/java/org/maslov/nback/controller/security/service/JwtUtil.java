@@ -89,5 +89,7 @@ public class JwtUtil {
         return (List<String>) claims.get("roles");
     }
 
-
+    public String getSecretKeys() {
+        return secret_key;
+    }
 }

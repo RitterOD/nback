@@ -18,4 +18,8 @@ public interface RestApiNamesV1 {
     String LOGIN = "/login";
     String API_V1_AUTH_LOGIN = API_V1_AUTH + LOGIN;
 
+    String SECRETS = "/secrets";
+
+    String API_V1_AUTH_SECRETS = API_V1_AUTH + SECRETS;
+
 }
