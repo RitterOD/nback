@@ -17,6 +17,7 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import static org.maslov.nback.controller.rest.v1.RestApiNamesV1.*;
+import static org.maslov.nback.controller.security.model.UserRoleType.ROLE_ADMIN;
 
 @Configuration
 @EnableWebSecurity
@@ -46,6 +47,7 @@ public class SecurityConfiguration {
                 .authorizeRequests()
                 .requestMatchers(API_V1_AUTH_LOGIN, API_V1_PUBLIC_ALL).permitAll()
                 .requestMatchers(API_V1_PRIVATE_ALL).authenticated()
+                .requestMatchers(API_V1_AUTH_SECRETS).hasRole(ROLE_ADMIN.getId())
                 .and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and().addFilterBefore(jwtAuthorizationFilter, UsernamePasswordAuthenticationFilter.class);
 
