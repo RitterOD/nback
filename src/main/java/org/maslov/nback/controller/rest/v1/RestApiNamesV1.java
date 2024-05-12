@@ -10,7 +10,7 @@ public interface RestApiNamesV1 {
     String PRIVATE = "/private";
     String API_V1_PUBLIC = API_V1 + PUBLIC;
 
-    String API_V1_PUBLIC_ABC = API_V1_PUBLIC + "/abc";
+    String API_V1_PUBLIC_ABC = API_V1_PUBLIC + "/abcs";
     String API_V1_PUBLIC_ALL = API_V1_PUBLIC + "/**";
 
     String API_V1_PRIVATE = API_V1 + PRIVATE;
