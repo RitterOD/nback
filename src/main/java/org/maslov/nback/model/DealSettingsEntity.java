@@ -30,9 +30,16 @@ public class DealSettingsEntity {
   private List<DealEntity> dealEntities;
 
 
-  @ManyToOne
-  @JoinColumn(name = "step_length_id", nullable = false)
-  private StepLengthEntity stepLengthEntity;
+  public Long getStepLength() {
+    return stepLength;
+  }
+
+  public void setStepLength(Long stepLength) {
+    this.stepLength = stepLength;
+  }
+
+  @Column(name="step_length", nullable = false)
+  private Long stepLength;
 
   @ManyToOne
   @JoinColumn(name = "deal_abc_id", nullable = false)
@@ -40,31 +47,30 @@ public class DealSettingsEntity {
 
 
 
-  @ManyToOne
-  @JoinColumn(name="insert_probability_id", nullable = false)
-  private DealProbabilityEntity dealProbabilityEntity;
 
-  @Column(name="deal_type")
-  @Enumerated(value = EnumType.STRING)
-  private DealType dealType;
+  @Column(name="deal_probability")
+  private Double dealProbability;
 
+  @Column(name="deal_type", nullable = false)
+  private Integer dealType;
 
 
-  public StepLengthEntity getStepLengthEntity() {
-    return stepLengthEntity;
+  public Integer getDealType() {
+    return dealType;
   }
 
-  public DealProbabilityEntity getDealProbabilityEntity() {
-    return dealProbabilityEntity;
+  public void setDealType(Integer dealType) {
+    this.dealType = dealType;
   }
 
-  public void setDealProbabilityEntity(DealProbabilityEntity dealProbabilityEntity) {
-    this.dealProbabilityEntity = dealProbabilityEntity;
+  public Double getDealProbability() {
+    return dealProbability;
   }
 
-  public void setStepLengthEntity(StepLengthEntity stepLengthEntity) {
-    this.stepLengthEntity = stepLengthEntity;
+  public void setDealProbability(Double dealProbability) {
+    this.dealProbability = dealProbability;
   }
+
 
   public DealAbcEntity getDealAbcEntity() {
     return dealAbcEntity;

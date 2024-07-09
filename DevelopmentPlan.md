@@ -19,3 +19,11 @@ Implement backend part of application
 1. Refactor code borrowed from sec project
 1.1 Separate auth service from another code
 2. Add some test
+
+
+# Restart development
+1. Remove DealProbabilityEntity
+2. Remove suffixes from table name
+3. Remove StepLengthEntity
+5. Create DealSettingsService and Controller
+6. Add generation of Deal

@@ -36,16 +36,18 @@
             <column name="id" type="UUID">
                 <constraints nullable="false" primaryKey="true" primaryKeyName="pk_deal_settings"/>
             </column>
-            <column name="step_length_id" type="UUID">
+            <column name="step_length" type="bigint">
                 <constraints nullable="false"/>
             </column>
             <column name="deal_abc_id" type="UUID">
                 <constraints nullable="false"/>
             </column>
-            <column name="insert_probability_id" type="UUID">
+            <column name="deal_probability" type="DOUBLE PRECISION">
                 <constraints nullable="false"/>
             </column>
-            <column name="deal_type" type="VARCHAR(255)"/>
+            <column name="deal_type" type="integer">
+                <constraints nullable="false"/>
+            </column>
         </createTable>
     </changeSet>
     <changeSet id="1711887245965-5" author="alex (generated)">
@@ -112,16 +114,6 @@
         <addForeignKeyConstraint baseColumnNames="deal_abc_id" baseTableName="deal_settings"
                                  constraintName="FK_DEAL_SETTINGS_ON_DEAL_ABC" referencedColumnNames="id"
                                  referencedTableName="deal_abc"/>
-    </changeSet>
-    <changeSet id="1711887245965-13" author="alex (generated)">
-        <addForeignKeyConstraint baseColumnNames="insert_probability_id" baseTableName="deal_settings"
-                                 constraintName="FK_DEAL_SETTINGS_ON_INSERT_PROBABILITY" referencedColumnNames="id"
-                                 referencedTableName="deal_probability"/>
-    </changeSet>
-    <changeSet id="1711887245965-14" author="alex (generated)">
-        <addForeignKeyConstraint baseColumnNames="step_length_id" baseTableName="deal_settings"
-                                 constraintName="FK_DEAL_SETTINGS_ON_STEP_LENGTH" referencedColumnNames="id"
-                                 referencedTableName="step_length"/>
     </changeSet>
     <changeSet id="1711887245965-15" author="alex (generated)">
         <addForeignKeyConstraint baseColumnNames="deal_id" baseTableName="deal_step"
